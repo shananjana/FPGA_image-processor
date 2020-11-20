@@ -1,0 +1,40 @@
+No,OpCode,,Instruction Code,Instruction Descrtiption,Instruction length in bytes,No of operands,Registers used
+1,8'b,0,NOP,No operation,1,0,
+2,8'b,1,RCV,Receive t number of bytes where t is specifeid by the operands,4,3,data_reg | nextaddress_reg | address_reg | data_in_reg | AC | SP1 | num_bytes_recieved reg
+3,8'b,10,TRN,Transmit t number of bytes where t is specifeid by the operands,4,3,next_address_reg | address_reg | AC | SP1 | data_out_reg | num_bytes_transmitted_reg
+4,8'b,11,LOADAC,Load the byte in the memory location t  (t specified by operands) to AC,4,3,AC | address_reg
+5,8'b,100,STOREAC,Store the byte in AC to the memory location t  (t specified by operands) ,4,3,AC | address_reg | data
+6,8'b,101,SHIFTR8,Shift AC by one byte to the right,1,0,AC
+7,8'b,110,SHIFTR1,Shift AC by one bit to the right,1,0,AC
+8,8'b,111,SHIFTL8,Shift AC by one byte to the left,1,0,AC
+9,8'b,1000,SHIFTL1,Shift AC by one bit to the left,1,0,AC 
+10,8'b,1001,RAC,R<=AC,1,0,AC | R
+11,8'b,1010,ROWAC,Rows<=AC,1,0,rows | AC
+12,8'b,1011,ACROW,AC<=Rows,1,0,rows | AC
+13,8'b,1100,COLAC,Cols<=AC,1,0,cols | AC
+14,8'b,1101,ACCOL,AC<=Cols,1,0,cols | AC
+15,8'b,1110,ACNCOL,AC<=Ncols,1,0,Ncols | AC
+16,8'b,1111,NCOLAC,Ncols<=AC,1,0,Ncols | AC
+17,8'b,10000,ACNROW,AC<=Nrows,1,0,Nrows | AC
+18,8'b,10001,NROWAC,Nrows<=AC,1,0,Nrows | AC
+19,8'b,10010,ACNXTADD,AC<=NxtAddress,1,0,Next_address|AC
+20,8'b,10011,STONXTADD,Store the last byte of AC to the memory location specified by NxtAddress,1,0,Next_address|AC
+21,8'b,10100,LOADNXTADD,Load the byte in the memory location specified by NextAddress to AC,1,0,Next_address|AC
+22,8'b,10101,ACXOR,AC<=AC xor R,1,0,AC|R
+23,8'b,10110,ACR,AC<=R,1,0,R| AC
+24,8'b,10111,ACINC,AC<=AC+1,1,0,AC
+25,8'b,11000,ACDEC,AC<=AC-1,1,0,AC
+26,8'b,11001,ACZERO,AC<=0,1,0,AC 
+27,8'b,11010,JMPNZ ,if(Z=0) Jump to instruction t specified by oprenad,2,1,Z | instruction_reg | PC
+28,8'b,11011,JMP  ,Jump to instruction t specified by operands,2,1,
+29,8'b,11100,JMPZ ,if(Z=1) Jump to instruction t specified by oprenad,2,1,Z | instruction_reg | PC
+30,8'b,11101,ACADD,AC<=AC+R,1,0,AC|R
+31,8'b,11110,ACSUB,AC<=AC-R,1,0,AC | R
+32,8'b,11111,SP1AC,SP1<=AC,1,0,AC|SP1
+33,8'b ,100000,ACSP1,AC<=SP1,1,0,AC|SP1
+34,8'b,100001,NXTADDAC,Next_address<=AC,1,0,Next_address|AC
+35,8'b,100010,ACSP2,AC<=SP2,1,0,AC|SP2
+36,8'b,100011,ACSP3,AC<=SP3,1,0,AC|SP3
+37,8'b,100100,SP2AC,SP2<=AC,1,0,AC|SP2
+38,8'b,100101,SP3AC,SP3<=AC,1,0,AC|SP3
+39,8'b ,100110,STOP ,stop process ,1,0,
